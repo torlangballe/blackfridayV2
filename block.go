@@ -263,6 +263,7 @@ func (p *Markdown) prefixHeading(data []byte) int {
 		block := p.addBlock(Heading, data[i:end])
 		block.HeadingID = id
 		block.Level = level
+		// fmt.Printf("{}HEADING %p %s %s:\n", block, block.HeadingID, string(data[i:end]))
 	}
 	return skip
 }
@@ -1446,7 +1447,6 @@ func (p *Markdown) renderParagraph(data []byte) {
 	for end > beg && data[end-1] == ' ' {
 		end--
 	}
-
 	p.addBlock(Paragraph, data[beg:end])
 }
 

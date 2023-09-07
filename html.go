@@ -602,6 +602,7 @@ func (r *HTMLRenderer) RenderNode(w io.Writer, node *Node, entering bool) WalkSt
 				//out(w, `<img src="" alt="`)
 				//} else {
 				r.out(w, []byte(`<img src="`))
+				// fmt.Println("OUTImage:", string(dest))
 				escLink(w, dest)
 				r.out(w, []byte(`" alt="`))
 				//}

@@ -379,12 +379,7 @@ func WithRefOverride(o ReferenceOverrideFunc) Option {
 //     output := Run(input, WithNoExtensions(), WithExtensions(exts),
 //         WithRenderer(yourRenderer))
 func Run(input []byte, opts ...Option) []byte {
-	r := NewHTMLRenderer(HTMLRendererParameters{
-		Flags: CommonHTMLFlags,
-	})
-	optList := []Option{WithRenderer(r), WithExtensions(CommonExtensions)}
-	optList = append(optList, opts...)
-	parser := New(optList...)
+	parser := New(opts...)
 	ast := parser.Parse(input)
 	var buf bytes.Buffer
 	parser.renderer.RenderHeader(&buf, ast)
